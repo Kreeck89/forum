@@ -1,0 +1,79 @@
+<%@ page import="ua.com.forum.controller.ValidateController" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <style>
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        .row.content {
+            height: 450px
+        }
+
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="${pageContext.request.contextPath}/">Main</a></li>
+                <li><a href="${pageContext.request.contextPath}/add_theme">Add Theme</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <c:if test="${empty sessionScope.email}">
+                    <li><a id="model_trigger"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/register"><span
+                            class="glyphicon glyphicon-log-in"></span>Registration</a>
+                    </li>
+                </c:if>
+                <c:if test="${not empty sessionScope.email}">
+                    <c:if test="${not empty sessionScope.role}">
+                        <li><a href="${pageContext.request.contextPath}/moder_title"><span
+                                class="glyphicon glyphicon-log-in"></span>Moderate</a>
+                        </li>
+                    </c:if>
+                    <li><a href="${pageContext.request.contextPath}/logout"><span
+                            class="glyphicon glyphicon-log-in"></span>Logout</a>
+                    </li>
+                </c:if>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div id="overlay">
+    <form action="${pageContext.request.contextPath}/login" method="post" id="model_1">
+        <span class="modal-close" id="close">X</span>
+        <h2>Login window</h2>
+        <input type="text" name="email" placeholder="E-mail" style="color: #555555">
+        <input type="password" name="password" placeholder="Password" style="color: #555555">
+        <button type="submit" id="btn">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

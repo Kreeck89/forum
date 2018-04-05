@@ -1,0 +1,103 @@
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+}
+
+#model_1 {
+    width: 350px;
+    padding: 15px 2%;
+    background-color: #121212;
+    border-radius: 8px;
+    margin-top: 15%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+input {
+    width: 100%;
+    background-color: black;
+    border: none;
+    border-bottom: 1px solid #fff;
+    font-size: 1.9rem;
+    line-height: 2;
+    margin-bottom: 2rem;
+    resize: none;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: #fff;
+    margin-bottom: 2rem;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.5;
+}
+
+.modal-close {
+    font-size: 2.5rem;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.modal-close:hover {
+    color: #555555;
+    cursor: pointer;
+}
+
+#model_1 {
+    display: none;
+}
+
+/*registration page*/
+
+#customerData {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.form-group label {
+    color: red;
+}
+
+/*theme page*/
+
+#themes {
+    text-align: center;
+    color: forestgreen;
+}
+
+/*moderate themes*/
+
+.moderateDate {
+    width: 800px;
+    margin: 0 auto;
+}
