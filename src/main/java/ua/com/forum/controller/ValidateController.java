@@ -3,10 +3,12 @@ package ua.com.forum.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import ua.com.forum.domain.Role;
 import ua.com.forum.domain.User;
+import ua.com.forum.service.RoleService;
 import ua.com.forum.service.ThemeService;
 import ua.com.forum.service.UserService;
 
@@ -22,6 +24,8 @@ public class ValidateController {
     private UserService userService;
     @Autowired
     private ThemeService themeService;
+    @Autowired
+    private RoleService roleService;
 
     /**
      * @param user Spring SessionAttribute for save User in session,
@@ -72,7 +76,7 @@ public class ValidateController {
      *      OR to "index.jsp" if new User was created.
      */
     @PostMapping("/registrations")
-    public String reg(User user, Model model, HttpSession session,
+    public String reg(User user, ModelMap model, HttpSession session,
                       @RequestParam String name,
                       @RequestParam String nick,
                       @RequestParam String email,
@@ -84,8 +88,11 @@ public class ValidateController {
             model.addAttribute(("allThemes"), themeService.getAll());
             return "oops";
         }
+        Role roleById = roleService.getById(1L);
+        user.getRoles().add(roleById);
         User save = userService.save(user);
 
+        model.addAttribute(("allThemes"), themeService.getAll());
         session.setAttribute("email", save.getEmail());
         return "index";
     }
